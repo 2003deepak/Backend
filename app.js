@@ -24,7 +24,7 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.post('/login', login);
 app.get('/generate/:question', generate);

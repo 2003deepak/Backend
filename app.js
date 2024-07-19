@@ -24,8 +24,12 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
-app.use(cors());
-
+app.use(
+  cors({
+    credentials: true,
+    origin: "https://frontend-roan-five-41.vercel.app",
+  })
+);
 app.post('/login', login);
 app.get('/generate/:question', generate);
 app.post('/saveChat', chatSave);

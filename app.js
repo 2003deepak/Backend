@@ -13,10 +13,6 @@ const app = express();
 
 const PORT = process.env.PORT || 8000 ; 
 
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
 const corsOptions = {
   origin: ["http://localhost:5173", "https://frontend-roan-five-41.vercel.app/"], 
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -24,7 +20,17 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
+
 app.use(cors(corsOptions));
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+
+app.get("/", () => {
+  res.json("Express on Vercel")
+});
 app.post('/login', login);
 app.get('/generate/:question', generate);
 app.post('/saveChat', chatSave);

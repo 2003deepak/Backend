@@ -1,7 +1,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-console.log('MONGO_URL:', process.env.MONGO_URL); // For debugging
+// console.log('MONGO_URL:', process.env.MONGO_URL); // For debugging
 
 
 mongoose.connect(process.env.MONGO_URL).then(() => {

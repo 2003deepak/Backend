@@ -5,7 +5,7 @@ const userModel = require("./Models/user");
 const chatModel = require('./Models/chat');
 const login = require('./Controllers/login');
 const generate = require('./Controllers/generate');
-const cors = require('cors');
+const cors = require("cors");
 const env = require('dotenv');
 const chatSave = require('./Controllers/chatSave');
 const cookieParser = require("cookie-parser");
@@ -18,18 +18,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: "https://frontend-roan-five-41.vercel.app",
+  origin: ["http://localhost:5173", "https://frontend-roan-five-41.vercel.app/"], 
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
 };
 
-app.use(
-  cors({
-    credentials: true,
-    origin: "https://frontend-roan-five-41.vercel.app",
-  })
-);
+app.use(cors(corsOptions));
 app.post('/login', login);
 app.get('/generate/:question', generate);
 app.post('/saveChat', chatSave);
@@ -51,4 +46,6 @@ app.post("/getChat" , async (req,res)=>{
 })
 
 
-app.listen(8000);
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});

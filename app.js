@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.get("/", () => {
-  res.json("Express on Vercel")
+  res.status(200).json("Express on Vercel")
 });
 app.post('/login', login);
 app.get('/generate/:question', generate);
